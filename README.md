@@ -42,5 +42,15 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Clerkie is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+Clerkie, operated by Henry Labs Inc. (San Francisco, founded 2016), is an AI-powered debt management
+and loan-recovery platform for consumers and institutional lenders. Its B2B product, Fiber, is an AI
+recovery platform sold to lenders, banks, credit unions and collection agencies, spanning CRM, an
+inventory management system, an AI agent, omnichannel communications, borrower scoring, a self-service
+payment portal and workflow automation.
+
+Clerkie markets a RESTful API to lenders but publishes no developer portal, no documentation and no
+machine-readable API contract; access is arranged through its sales process. See `apis.yml`
+(`x-coverage`) and `well-known/clerkie-well-known.yml` for the full record of what was probed.
+
+- https://www.clerkie.io/
+- https://www.getfiber.ai/

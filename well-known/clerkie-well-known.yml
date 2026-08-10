@@ -1,0 +1,196 @@
+generated: '2026-08-09'
+method: probed
+source: live GET probes of /.well-known/* and discovery paths on every Clerkie host
+# No document was found. This file is the negative record of what was actually probed,
+# not a discovery index — `documents` is empty, and NO `WellKnown` / `SecurityTxt`
+# pointer is wired into apis.yml, because nothing is published to point at.
+documents: []
+probes:
+- host: https://api.clerkie.io
+  note: >-
+    Live API host. The root returns a JSON health payload
+    ({"success":true,"message":"'Hello World, I'm alive and well :)'"}), but every other path
+    probed anonymously returns HTTP 500 with an HTML Express error page (TypeError), including
+    the /.well-known/* paths. The 500 is a catch-all, not evidence of a resource.
+  results:
+  - path: /
+    status: 200
+    content_type: application/json
+  - path: /.well-known/security.txt
+    status: 500
+  - path: /.well-known/openid-configuration
+    status: 500
+  - path: /.well-known/oauth-authorization-server
+    status: 500
+  - path: /.well-known/oauth-protected-resource
+    status: 500
+  - path: /.well-known/api-catalog
+    status: 500
+  - path: /.well-known/ai-plugin.json
+    status: 500
+  - path: /.well-known/agent-card.json
+    status: 500
+  - path: /.well-known/agent.json
+    status: 500
+  - path: /openapi.json
+    status: 500
+  - path: /openapi.yaml
+    status: 500
+  - path: /swagger.json
+    status: 500
+  - path: /v1/openapi.json
+    status: 500
+  - path: /api-docs
+    status: 500
+  - path: /docs
+    status: 500
+  - path: /redoc
+    status: 500
+  - path: /llms.txt
+    status: 500
+  - path: /graphql
+    status: 500
+  - path: /mcp
+    status: 500
+- host: https://www.clerkie.io
+  note: Marketing site (Gatsby). All discovery paths return the site 404 page.
+  results:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /robots.txt
+    status: 404
+  - path: /sitemap.xml
+    status: 404
+- host: https://app.clerkie.io
+  note: >-
+    Consumer web app (single-page app). SOFT-404 WARNING — this host answers HTTP 200 with the
+    same 128KB HTML app shell for /llms.txt, /openapi.json, /sitemap.xml and /robots.txt alike.
+    The 200 is the SPA catch-all, not a published document; all four were rejected as false
+    positives on body inspection.
+  results:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /llms.txt
+    status: 200
+    rejected: soft-404 HTML app shell, not llms.txt
+  - path: /openapi.json
+    status: 200
+    rejected: soft-404 HTML app shell, not a specification
+- host: https://www.getfiber.ai
+  note: Fiber product marketing site. robots.txt and sitemap.xml are real; no API discovery surface.
+  results:
+  - path: /robots.txt
+    status: 200
+    content_type: text/plain
+  - path: /sitemap.xml
+    status: 200
+    content_type: text/xml
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /docs
+    status: 404
+- host: https://api.getfiber.ai
+  note: >-
+    Fiber API host, fronted by an AWS Elastic Load Balancer (server: awselb/2.0). Every path,
+    including the root, returns HTTP 403 Forbidden to an anonymous client. No anonymous discovery
+    surface of any kind.
+  results:
+  - path: /
+    status: 403
+  - path: /openapi.json
+    status: 403
+  - path: /swagger.json
+    status: 403
+  - path: /v1/openapi.json
+    status: 403
+  - path: /docs
+    status: 403
+  - path: /api-docs
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /graphql
+    status: 403
+  - path: /mcp
+    status: 403
+- host: https://fiber.clerkie.io
+  note: Legacy Fiber app host on Vercel (Next.js). All discovery paths return the app 404 page.
+  results:
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /docs
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+subdomains_with_no_dns:
+- docs.clerkie.io
+- developer.clerkie.io
+- developers.clerkie.io
+- status.clerkie.io
+- help.clerkie.io
+- support.clerkie.io
+- blog.clerkie.io
+- dashboard.clerkie.io
+- portal.clerkie.io
+- sandbox.clerkie.io
+- docs.getfiber.ai
+- developers.getfiber.ai
+- app.getfiber.ai
+- trust.getfiber.ai
+- status.getfiber.ai
+- help.getfiber.ai
+- support.getfiber.ai

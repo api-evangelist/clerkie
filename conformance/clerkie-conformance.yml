@@ -1,0 +1,122 @@
+generated: '2026-08-09'
+method: probed
+source: >-
+  Live probes of Clerkie/Fiber hosts plus the security and compliance claims made on
+  www.clerkie.io/lenders and www.getfiber.ai. No OpenAPI, AsyncAPI, or other machine-readable
+  contract exists to derive conformance from, so every entry below is evidenced by a probe or by
+  a marketing claim — never by a specification.
+note: >-
+  Clerkie sells compliance and security posture to regulated lenders ("highest levels of security
+  and compliance standards", encryption, role-based access controls, audit logging, real-time
+  security monitoring, regulatory monitoring), but publishes no certification, no trust center, no
+  security.txt, and no machine-readable contract that any of these claims could be checked against.
+  Every claim below is asserted on a marketing page and unverifiable from the public surface.
+standards:
+- id: rfc9116
+  name: security.txt (RFC 9116)
+  conforms: false
+  evidence:
+  - url: https://www.clerkie.io/.well-known/security.txt
+    status: 404
+  - url: https://www.getfiber.ai/.well-known/security.txt
+    status: 404
+  - url: https://api.clerkie.io/.well-known/security.txt
+    status: 500
+- id: openapi
+  name: OpenAPI Specification
+  conforms: false
+  evidence:
+  - url: https://api.clerkie.io/openapi.json
+    status: 500
+  - url: https://api.getfiber.ai/openapi.json
+    status: 403
+  - url: https://www.getfiber.ai/openapi.json
+    status: 404
+  note: >-
+    A RESTful API is marketed on www.clerkie.io/lenders ("For developers, by developers", "with just
+    a few lines of code, you can implement Clerkie in one afternoon") but no contract is published.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence:
+  - url: https://api.clerkie.io/.well-known/oauth-authorization-server
+    status: 500
+  - url: https://api.getfiber.ai/.well-known/oauth-authorization-server
+    status: 403
+  note: No authorization-server metadata is served; the API's auth model is not publicly documented.
+- id: oidc
+  name: OpenID Connect Discovery
+  conforms: false
+  evidence:
+  - url: https://api.clerkie.io/.well-known/openid-configuration
+    status: 500
+  - url: https://www.clerkie.io/.well-known/openid-configuration
+    status: 404
+- id: rfc8615
+  name: Well-Known URIs / api-catalog (RFC 8615, RFC 9727)
+  conforms: false
+  evidence:
+  - url: https://www.clerkie.io/.well-known/api-catalog
+    status: 404
+  - url: https://www.getfiber.ai/.well-known/api-catalog
+    status: 404
+- id: a2a
+  name: A2A Agent Card
+  conforms: false
+  evidence:
+  - url: https://www.clerkie.io/.well-known/agent-card.json
+    status: 404
+  - url: https://www.getfiber.ai/.well-known/agent-card.json
+    status: 404
+  - url: https://api.clerkie.io/.well-known/agent-card.json
+    status: 500
+- id: dmarc
+  name: DMARC (RFC 7489)
+  conforms: partial
+  evidence:
+  - domain: clerkie.io
+    result: DMARC present, policy p=reject; SPF present; DNSSEC enabled
+  - domain: getfiber.ai
+    result: no DMARC record, no SPF record, DNSSEC not enabled
+  note: >-
+    The primary corporate domain clerkie.io is hardened (DNSSEC + SPF + DMARC p=reject), but
+    getfiber.ai — the domain the lender product is now sold on — has neither SPF nor DMARC nor
+    DNSSEC, leaving the product brand unprotected against email spoofing.
+  source: security/clerkie-domain-security.yml
+claimed_but_unverified:
+- claim: Data encryption for borrower personal information
+  source: https://www.clerkie.io/lenders
+  published_evidence: none
+- claim: Role-based access controls
+  source: https://www.clerkie.io/lenders
+  published_evidence: none
+- claim: Audit logging of all access events and system changes
+  source: https://www.clerkie.io/lenders
+  published_evidence: none
+- claim: Real-time security monitoring
+  source: https://www.clerkie.io/lenders
+  published_evidence: none
+- claim: >-
+    "Highest levels of security and compliance standards" and monitoring of regulatory change
+  source: https://www.clerkie.io/lenders
+  published_evidence: >-
+    No named certification (SOC 2, ISO 27001, PCI DSS), no trust center, and no audit report is
+    published. trust.getfiber.ai and status.getfiber.ai do not resolve.
+regulatory_context:
+- regime: FDCPA / CFPB Regulation F
+  applicability: >-
+    Fiber is sold as debt collection and recovery software to lenders and agencies in the United
+    States, placing its users under the Fair Debt Collection Practices Act and Regulation F. Fiber
+    publishes commentary on CFPB guidance in its resources section but makes no conformance claim.
+  evidence:
+  - url: https://www.getfiber.ai/resources/cfpb-guidance-withdrawal
+    status: 200
+  - url: https://www.getfiber.ai/resources/navigating-the-changing-regulatory-landscape
+    status: 200
+- regime: Data processing terms
+  applicability: Fiber publishes a Data Processing Addendum and an Acceptable Use Policy.
+  evidence:
+  - url: https://www.getfiber.ai/legal/dpa
+    status: 200
+  - url: https://www.getfiber.ai/legal/aup
+    status: 200
