@@ -16,7 +16,7 @@ image: https://www.clerkie.io/static/clerkie-logo-white-bc35b467de9da2a6e9ab4dfe
 url: https://raw.githubusercontent.com/api-evangelist/clerkie/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-09'
 modified: '2026-08-09'
 tags:
