@@ -21,6 +21,19 @@ created: '2026-08-09'
 modified: '2026-08-09'
 tags:
 - Company
+- Fintech
+- Debt Management
+- Lending
+- Loan Servicing
+- Debt Collection
+- Payments
+- Credit
+- Financial-Services
+- Personal Finance
+- AI Agent
+- Consumer Finance
+tags_raw:
+- Company
 - fintech
 - debt-management
 - lending
@@ -44,6 +57,13 @@ apis:
   humanURL: https://www.clerkie.io/lenders
   baseURL: https://api.clerkie.io/
   tags:
+  - Fintech
+  - Lending
+  - Loan Servicing
+  - Debt Collection
+  - Payments
+  - Financial-Services
+  tags_raw:
   - fintech
   - lending
   - loan-servicing
