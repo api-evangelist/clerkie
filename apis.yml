@@ -12,6 +12,17 @@ description: >-
   automated repayment arrangements, but publishes no public developer documentation, machine-readable API
   contract, or self-serve developer portal — integration is arranged through a sales conversation. The
   company has raised over $41M from Left Lane Capital, Flourish Ventures, Vestigo Ventures, and Citibank.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.clerkie.io/static/clerkie-logo-white-bc35b467de9da2a6e9ab4dfe5fc98170.png
 url: https://raw.githubusercontent.com/api-evangelist/clerkie/refs/heads/main/apis.yml
 x-type: company
