@@ -51,7 +51,7 @@ tags:
 - Debt Collection
 - Payments
 - Credit
-- Financial-Services
+- Financial Services
 - Personal Finance
 - AI Agents
 - Consumer Finance
@@ -68,6 +68,7 @@ tags_raw:
 - personal-finance
 - ai-agent
 - consumer-finance
+- Financial-Services
 apis:
 - name: Clerkie API
   description: >-
@@ -85,7 +86,7 @@ apis:
   - Loan Servicing
   - Debt Collection
   - Payments
-  - Financial-Services
+  - Financial Services
   tags_raw:
   - fintech
   - lending
@@ -93,6 +94,7 @@ apis:
   - debt-collection
   - payments
   - financial-services
+  - Financial-Services
   properties:
   - type: DomainSecurity
     url: security/clerkie-domain-security.yml
